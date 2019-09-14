@@ -89,9 +89,34 @@ num_iters = 400;
 theta = zeros(3, 1);
 [theta, J_history] = gradientDescentMulti(X, y, theta, alpha, num_iters);
 
+alpha_2 = 0.1;
+num_iters_2 = 100;
+theta_2 = zeros(3, 1);
+[theta_2, J_history_2] = gradientDescentMulti(X, y, theta_2, alpha_2, num_iters_2);
+
+alpha_3 = .3;
+num_iters_3 = 50;
+theta_3 = zeros(3, 1);
+[theta_3, J_history_3] = gradientDescentMulti(X, y, theta_3, alpha_3, num_iters_3);
+
+alpha_4 = .001;
+num_iters_4 = 400;
+theta_4 = zeros(3, 1);
+[theta_4, J_history_4] = gradientDescentMulti(X, y, theta_4, alpha_4, num_iters_4);
+
+alpha_5 = 1;
+num_iters_5 = 50;
+theta_5 = zeros(3, 1);
+[theta_5, J_history_5] = gradientDescentMulti(X, y, theta_5, alpha_5, num_iters_5);
+
 % Plot the convergence graph
 figure;
 plot(1:numel(J_history), J_history, '-b', 'LineWidth', 2);
+hold on;
+plot(1:numel(J_history_2), J_history_2, '-r', 'LineWidth', 2);
+plot(1:numel(J_history_3), J_history_3, '-g', 'LineWidth', 2);
+plot(1:numel(J_history_4), J_history_4, '-r', 'LineWidth', 2);
+plot(1:numel(J_history_5), J_history_5, '-k', 'LineWidth', 2);
 xlabel('Number of iterations');
 ylabel('Cost J');
 
@@ -104,7 +129,8 @@ fprintf('\n');
 % ====================== YOUR CODE HERE ======================
 % Recall that the first column of X is all-ones. Thus, it does
 % not need to be normalized.
-price = 0; % You should change this
+predict = ([1650 3] - mu) ./sigma;
+price = [1 predict] * theta;
 
 
 % ============================================================
@@ -149,7 +175,7 @@ fprintf('\n');
 
 % Estimate the price of a 1650 sq-ft, 3 br house
 % ====================== YOUR CODE HERE ======================
-price = 0; % You should change this
+price = [1 predict] * theta;
 
 
 % ============================================================

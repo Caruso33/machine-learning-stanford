@@ -18,9 +18,9 @@ for iter = 1:num_iters
     %
 
 
-
-
-
+    hypo_theta =  X * theta - y;
+    err_single = hypo_theta' * X;
+    theta = theta - (alpha / m) * err_single'; 
 
 
     % ============================================================
